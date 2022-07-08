@@ -12,7 +12,8 @@ classes = []
 with open("classes.txt", "r") as f:
     classes = f.read().splitlines()
 
-cap = cv2.VideoCapture(1)
+# '0' to use default camera. Change to '1' for external webcam if attached.
+cap = cv2.VideoCapture(0)
 font = cv2.FONT_HERSHEY_PLAIN
 colors = np.random.uniform(0, 255, size=(100, 3))
 
@@ -22,7 +23,6 @@ def img_overlay(background, overlay, x_offset, y_offset):
 
     alpha_s = overlay[:, :, 3] / 255.0
     alpha_l = 1.0 - alpha_s
-    
 
     for c in range(0, 3):
         background[y1:y2, x1:x2, c] = (alpha_s * overlay[:, :, c] +
@@ -33,8 +33,8 @@ def img_overlay(background, overlay, x_offset, y_offset):
 def gen_frames():  # generate frame by frame from camera
     while True:
         _, img = cap.read()                
-        black_img = cv2.imread('tableImage.png', -1)
-        # black_img = img
+        # black_img = cv2.imread('tableImage.png', -1)
+        black_img = img
 
         width = 1280
         height = 780
@@ -81,7 +81,8 @@ def gen_frames():  # generate frame by frame from camera
                 
                 label = str(classes[class_ids[i]])
                 confidence = str(round(confidences[i],2))
-                color = colors[i]                      
+                # Colors for boxes
+                # color = colors[i]
                 # cv2.rectangle(black_img, (x,y), (x+w, y+h), color, 2)
                 # cv2.putText(black_img, label + " " + confidence, (x, y+20), font, 2, (255,255,255), 2)            
                 
@@ -99,8 +100,9 @@ def gen_frames():  # generate frame by frame from camera
                 
                 image_front = cv2.resize(image_front, (200, 200), interpolation = cv2.INTER_AREA)        
 
-                print(color)
+                # print(color)
 
+                # Per Max McGee: manually create bounds to prevent issue of app stopping to work when pod went out of a seemingly random area.
                 if y>80 and y<570 and x>100 and x<1050:
                     black_img = img_overlay(black_img, image_front, x_offset + 100, y_offset)
                 

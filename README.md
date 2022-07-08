@@ -20,11 +20,11 @@ This dataset was then run in a Google Colab notebook, training for 4-6 hours.
 
 With the trained .weights file, we were able to then create a flask app the projected a black background with content showing next to each detected object, based on the object detected.
 
-\*\*Note - The .weights file is not included in this repo, and needs to be downloaded here and here:
+\*\*Note - The .weights and config files are not included in this repo, and needs to be downloaded and placed into your local repo:
 
-https://drive.google.com/file/d/1-1RtrG9SCgaoClp2YkjgiuRM-h3GT5bo/view?usp=sharing
+.weights file: https://drive.google.com/file/d/1-1RtrG9SCgaoClp2YkjgiuRM-h3GT5bo/view?usp=sharing
 
-https://drive.google.com/file/d/1_0vqjtWNgXbS_Fi-vsCSS7cUx2xdnul-/view
+config file (save as yolov4-obj_2000.cfg): https://drive.google.com/file/d/1_0vqjtWNgXbS_Fi-vsCSS7cUx2xdnul-/view
 
 **3. Setup CV2 to display custom content next to detected object.**
 
@@ -36,9 +36,12 @@ It is worth noting, this project was cut a bit short. We left off setting up a p
 
 Currently the app is only run locally.
 
-The basic architecture:
+Setup steps:
 
-1.  Flask app, running `python3 Object_Detection.py` . This starts the server, running the app on localhost:5000.
+1. Install Python, Flask (`pip3 install flask`), CV2 (`pip3 install opencv-python`)
+2. Download the .weights and config files listed above and move them to the local repo
+3. To start the application, run `python3 Object_Detection.py`. This starts the server, running the app on localhost:5000, where you should see the webcam view.
+4. Use a physical pod (or an image of one) and move it in front of the web camera to view the associated image file (singleOriginInfo.png, vollutoInfo.png, pikesPlaceInfo.png) on the screen/projector. 
 
 ## Tech Stack
 
