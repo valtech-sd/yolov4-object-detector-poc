@@ -1,2 +1,4 @@
 yolov4-obj_2000.weights
 yolov4-obj_2000.cfg
+yolov4-obj_2000-graytable.weights
+yolov4-obj_2000-graytable.cfg

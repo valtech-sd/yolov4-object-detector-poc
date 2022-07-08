@@ -16,12 +16,11 @@
       crossorigin="anonymous"
     />
 
-    <title>Live Streaming Demonstration</title>
     <style>
       .vertical-center {
         min-height: 100%; /* Fallback for browsers do NOT support vh unit */
         min-height: 100vh; /* These two lines are counted as one :-)       */
-
+        background: black;
         display: flex;
         align-items: center;
       }
@@ -38,7 +37,6 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-12">
-            <h3 class="mt-5 center">Live Streaming</h3>
             <img src="{{ url_for('video_feed') }}" width="100%" />
           </div>
         </div>
