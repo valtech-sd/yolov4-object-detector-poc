@@ -33,11 +33,13 @@ def img_overlay(background, overlay, x_offset, y_offset):
 def gen_frames():  # generate frame by frame from camera
     while True:
         _, img = cap.read()                
-        # black_img = cv2.imread('tableImage.png', -1)
-        black_img = img
+        black_img = cv2.imread('tableImage2.png', -1)
+#        black_img = img
 
-        width = 1280
-        height = 780
+#        width = 1280
+#        height = 780
+        width = 3840
+        height = 2160
         dim = (width, height)
         black_img = cv2.resize(black_img, dim, interpolation = cv2.INTER_AREA)        
         
@@ -98,13 +100,18 @@ def gen_frames():  # generate frame by frame from camera
                 elif label=='PikePlaceRoast':
                     image_front = cv2.imread('pikesPlaceInfo.png', -1)
                 
-                image_front = cv2.resize(image_front, (200, 200), interpolation = cv2.INTER_AREA)        
+#                image_front = cv2.resize(image_front, (200, 200), interpolation = cv2.INTER_AREA)
+                image_front = cv2.resize(image_front, (500, 500), interpolation = cv2.INTER_AREA)
 
                 # print(color)
+                print(x_offset)
+                print(y_offset)
 
                 # Per Max McGee: manually create bounds to prevent issue of app stopping to work when pod went out of a seemingly random area.
-                if y>80 and y<570 and x>100 and x<1050:
-                    black_img = img_overlay(black_img, image_front, x_offset + 100, y_offset)
+#                if y>80 and y<570 and x>100 and x<1050:
+                if y>80 and y<1500 and x>100 and x<3000:
+#                    black_img = img_overlay(black_img, image_front, x_offset + 100, y_offset)
+                    black_img = img_overlay(black_img, image_front, x_offset, y_offset)
                 
 
         

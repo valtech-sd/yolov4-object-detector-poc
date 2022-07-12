@@ -4,6 +4,7 @@ There were several steps to the process of creating the POC:
 
 **1. Train Custom Object Detector / Weights File**
 
+
 ([https://youtu.be/mmj3nxGT2YQ](https://youtu.be/mmj3nxGT2YQ))
 
 For our POC, we took 3 types of starbucks coffee pods, and took about 300 photos per pod. The photos were taken with the same background / hand holding the pod that the POC would have when it was running live, and it was important to get the best model possible via this process.
